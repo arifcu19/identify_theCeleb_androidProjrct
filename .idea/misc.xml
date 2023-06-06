@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/drawable-v24/ic_dislike.xml" value="0.206" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/drawable/background.xml" value="0.2325" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/drawable/ic_baseline_email.xml" value="0.251" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/drawable/ic_comment.xml" value="0.2145" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/drawable/ic_image.xml" value="0.2145" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/drawable/ic_launcher_image.xml" value="0.206" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/drawable/ic_user.xml" value="0.251" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/activity_comment_panel.xml" value="0.2546875" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/activity_cricketers.xml" value="0.22573749465583584" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/activity_detection.xml" value="0.24094202898550723" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/activity_forgot_password.xml" value="0.24094202898550723" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/activity_home.xml" value="0.24094202898550723" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/activity_image_review.xml" value="0.275" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/activity_main.xml" value="0.3" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/activity_map.xml" value="0.22573749465583584" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/activity_profile_update.xml" value="0.23229166666666667" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/activity_rating.xml" value="0.21419410004275333" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/activity_registration.xml" value="0.24094202898550723" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/activity_review.xml" value="0.24094202898550723" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/activity_send_otp.xml" value="0.2" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/activity_show_image_review.xml" value="0.275" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/activity_soccer_class.xml" value="0.22573749465583584" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/activity_verify_otp.xml" value="0.2013681060282172" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/custom_recycle_soccer.xml" value="0.22488242838820008" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/sample.xml" value="0.275" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/sample_spinner.xml" value="0.18087035358114234" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/layout/samplelist_layout.xml" value="0.24094202898550723" />
+        <entry key="..\:/AndroidProject/DevApp/app/src/main/res/menu/app_menu.xml" value="0.2" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

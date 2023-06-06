@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">DevApp</string>
+    <string name="the_celebrity_is_a_person_who_is_known_for_his_well_knownness">The celebrity is a person who is known for his well-knownness.\n"                                     "Daniel J. Boorstin</string>
+
+    <string-array name="fields">
+        <item>Footballers</item>
+        <item>Cricketers</item>
+        <item>Actors</item>
+    </string-array>
+
+    <string name="wesendyou">We will send you an OTP on this mobile number</string>
+
+
+</resources>

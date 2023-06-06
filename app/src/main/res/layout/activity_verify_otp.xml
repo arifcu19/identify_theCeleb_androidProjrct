@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/ic_wave"
+    android:gravity="center"
+    tools:context=".VerifyOTP">
+
+
+    <LinearLayout
+        android:background="#F3EEEE"
+        android:orientation="vertical"
+        android:layout_width="350dp"
+        android:layout_marginTop="90dp"
+        android:layout_gravity="center"
+        android:layout_height="590dp">
+
+
+    <ImageView
+        android:layout_marginTop="100dp"
+        android:src="@drawable/ic_verification"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+    </ImageView>
+
+
+    <TextView
+        android:text="OTP Verification"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="50dp"
+        android:textAlignment="center"
+        android:layout_marginRight="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+    <TextView
+        android:text="Enter the OTP sent to"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="50dp"
+        android:textAlignment="center"
+        android:layout_marginRight="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/textMobile"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="50dp"
+        android:textAlignment="center"
+        android:layout_marginRight="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/inputCode1"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:textSize="20sp"
+            android:maxLength="1"
+            android:textStyle="bold"
+            android:layout_width="40dp"
+            android:layout_height="45dp">
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/inputCode2"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:textSize="20sp"
+            android:maxLength="1"
+            android:textStyle="bold"
+            android:layout_width="40dp"
+            android:layout_height="45dp">
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/inputCode3"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:textSize="20sp"
+            android:maxLength="1"
+            android:textStyle="bold"
+            android:layout_width="40dp"
+            android:layout_height="45dp">
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/inputCode4"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:textSize="20sp"
+            android:maxLength="1"
+            android:textStyle="bold"
+            android:layout_width="40dp"
+            android:layout_height="45dp">
+
+        </EditText>
+
+
+        <EditText
+            android:id="@+id/inputCode5"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:textSize="20sp"
+            android:maxLength="1"
+            android:textStyle="bold"
+            android:layout_width="40dp"
+            android:layout_height="45dp">
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/inputCode6"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:textSize="20sp"
+            android:maxLength="1"
+            android:textStyle="bold"
+            android:layout_width="40dp"
+            android:layout_height="45dp">
+
+        </EditText>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:text="Don't receive the OTP?"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="60dp"
+            android:textAlignment="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/otpResendId"
+            android:text=" Resend"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textColor="#E16161"
+            android:textAlignment="center"
+            android:layout_marginRight="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/verifyId"
+            android:text="Verify"
+            android:layout_width="300dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+        </Button>
+
+        <ProgressBar
+            android:id="@+id/progressVerifyId"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_width="40dp"
+            android:layout_height="40dp">
+
+        </ProgressBar>
+
+    </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>
