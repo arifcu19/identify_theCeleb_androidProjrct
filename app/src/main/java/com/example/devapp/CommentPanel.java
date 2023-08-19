@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ProgressDialog;
+import android.app.AlertDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -38,23 +37,26 @@ public class CommentPanel extends AppCompatActivity {
 
     DatabaseReference commentRef,userRef;
 
-    private List<ModelClass> modelClassList;
+    private List<CommentModelClass> commentModelClassList;
     private RecyclerView recyclerView;
+
+    private AlertDialog.Builder alertDialogBuilder;
 
     private EditText edtComment;
     private Button submitComment;
     String postkey;
+
+/*    FirebaseAuth mAuth;
+    FirebaseUser mUser;*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment_panel);
 
-        ActionBar actionBar;
-        actionBar = getSupportActionBar();
 
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#236488"));
-        actionBar.setBackgroundDrawable(colorDrawable);
-
+      /*  mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();*/
 
         edtComment = findViewById(R.id.commentsssssId);
         submitComment = findViewById(R.id.commentBtnId);
@@ -67,6 +69,7 @@ public class CommentPanel extends AppCompatActivity {
         commentRef = FirebaseDatabase.getInstance().getReference().child("Upload").child(postkey).child("Comments");
 //      userRef = FirebaseDatabase.getInstance().getReference().child("Users");
         userRef = FirebaseDatabase.getInstance().getReference().child("Userprofile");
+
 
 
 
@@ -118,10 +121,10 @@ public class CommentPanel extends AppCompatActivity {
             String ctime = timeFormat.format(dateValue.getTime());
 
 
-            ModelClass modelClass = new ModelClass(username, userimage, mComment, cdate, ctime);
+            CommentModelClass commentModelClass = new CommentModelClass(username, userimage, mComment, cdate, ctime);
 
             String key = commentRef.push().getKey();
-            commentRef.child(key).setValue(modelClass);
+            commentRef.child(key).setValue(commentModelClass);
             edtComment.setText("");
         }
     }
@@ -130,26 +133,65 @@ public class CommentPanel extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        FirebaseRecyclerOptions<ModelClass> options =
-                new FirebaseRecyclerOptions.Builder<ModelClass>()
-                        .setQuery(commentRef, ModelClass.class)
+        FirebaseRecyclerOptions<CommentModelClass> options =
+                new FirebaseRecyclerOptions.Builder<CommentModelClass>()
+                        .setQuery(commentRef, CommentModelClass.class)
                         .build();
 
-        FirebaseRecyclerAdapter<ModelClass,CommentsViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<ModelClass, CommentsViewHolder>(options) {
+        FirebaseRecyclerAdapter<CommentModelClass,CommentsViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<CommentModelClass, CommentsViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull CommentsViewHolder holder, int position, @NonNull ModelClass model) {
+            protected void onBindViewHolder(@NonNull CommentsViewHolder holder, int position, @NonNull CommentModelClass model) {
                 holder.comment.setText(model.getComment());
                 holder.user.setText(model.getUsername());
                 holder.date.setText(model.getDate());
                 holder.time.setText(model.getTime());
                 Glide.with(holder.imgUser.getContext()).load(model.getUserimage()).into(holder.imgUser);
 
+
+                //Here i'm going to add comment "delete" working process
+        /*        holder.commentCardView.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View view) {
+
+
+                        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                        if(firebaseUser == null){
+                            alertDialogBuilder = new AlertDialog.Builder(CommentPanel.this);
+                            alertDialogBuilder.setTitle("Warning");
+                            alertDialogBuilder.setMessage("Do you want to delete it?");
+                            alertDialogBuilder.setIcon(R.drawable.ic_account);
+                            alertDialogBuilder.setCancelable(false);
+
+                            alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    //exit
+                                    finish();
+                                }
+                            });
+
+                            alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                            AlertDialog alertDialog = alertDialogBuilder.create();
+                            alertDialog.show();
+
+                        }
+
+                        return false;
+                    }
+                });*/
+
             }
 
             @NonNull
             @Override
             public CommentsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.samplelist_layout,parent,false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.samplelist_comment_layout,parent,false);
                 return new CommentsViewHolder(view);
             }
         };

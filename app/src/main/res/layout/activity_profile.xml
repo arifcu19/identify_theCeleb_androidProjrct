@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".ProfileUpload">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="380dp"
+        android:id="@+id/currentUserProfileId"
+        android:layout_marginTop="10dp"
+        android:layout_height="520dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        card_view:cardBackgroundColor="#FCFFFF"
+        card_view:cardCornerRadius="1dp"
+        card_view:cardElevation="3dp"
+        card_view:cardUseCompatPadding="true"
+        >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userImage"
+            android:layout_width="250dp"
+            android:layout_height="240dp"
+            app:civ_border_width="3dp"
+            app:civ_border_color="#AE9D9D"
+            >
+
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+        <TextView
+            android:id="@+id/userProfileName"
+            android:layout_width="300dp"
+            android:textSize="20sp"
+            android:background="@drawable/background"
+            android:textAlignment="center"
+            android:layout_marginTop="25dp"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/userProfileEmail"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:background="@drawable/background"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/userProfilePassword"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:background="@drawable/background"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+
+
+        <TextView
+            android:id="@+id/userProfileBirthDate"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:background="@drawable/background"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/userProfilePlace"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:background="@drawable/background"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+
+            </LinearLayout>
+
+       </androidx.cardview.widget.CardView>
+
+
+        <LinearLayout
+            android:id="@+id/linearlayoutPost"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingLeft="10dp"
+            android:paddingTop="20dp"
+            android:paddingRight="10dp"
+            app:layout_constraintStart_toStartOf="@+id/currentUserProfileId"
+            app:layout_constraintTop_toBottomOf="@+id/currentUserProfileId"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <EditText
+                android:id="@+id/postTextId"
+                android:hint="Share your thought"
+                android:padding="5dp"
+                android:background="@drawable/background"
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+            </EditText>
+
+            <Button
+                android:text="Post"
+                android:id="@+id/postButtonId"
+                android:textAllCaps="false"
+                android:layout_gravity="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </Button>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingLeft="8dp"
+            android:paddingTop="60dp"
+            android:paddingRight="8dp"
+            app:layout_constraintStart_toStartOf="@+id/linearlayoutPost"
+            app:layout_constraintTop_toBottomOf="@+id/linearlayoutPost"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycleVWPostCurrentUser"
+                android:layout_width="match_parent"
+                android:layout_height="1000dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

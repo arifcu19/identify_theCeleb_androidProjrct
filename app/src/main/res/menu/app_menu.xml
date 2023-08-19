@@ -3,30 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-            <item
-                android:id="@+id/userProfileId"
-                android:title="Profile"
-                android:icon="@drawable/ic_account"
-                app:showAsAction="never"
-                />
 
         <item
             android:id="@+id/logoutMenuId"
-            android:title="Logout"
+            android:title="@string/logout"
             android:icon="@drawable/ic_account"
             app:showAsAction="never"
             />
 
-        <item
-            android:id="@+id/ratingMenuId"
-            android:title="Rate us"
-            android:icon="@drawable/ic_rating"
-            app:showAsAction="never"
-            />
 
         <item
             android:id="@+id/settingId"
-            android:title="Setting"
+            android:title="@string/setting"
             android:icon="@drawable/ic_setting"
             app:showAsAction="never"
             />

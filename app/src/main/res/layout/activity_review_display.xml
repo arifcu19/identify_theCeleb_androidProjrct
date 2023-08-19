@@ -6,16 +6,26 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".ShowImageReview">
+    tools:context=".ReviewDisplay">
 
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reView"
         android:layout_width="match_parent"
-        android:layout_height="700dp">
+        android:layout_height="650dp">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabUplaodId"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:src="@drawable/ic_share"
+        android:layout_margin="10dp"
+        android:layout_gravity="end"
+
+         />
 
 
     <ProgressBar

@@ -1,11 +1,13 @@
 package com.example.devapp;
 
-public class Upload {
+public class UserHistoryDetails {
 
-    public Upload(String imageName, String imageUri, String username) {
+
+    public UserHistoryDetails(String imageName, String imageUri, Object timestamp) {
         this.imageName = imageName;
         this.imageUri = imageUri;
-        this.username = username;
+        this.timestamp = timestamp;
+
     }
 
 
@@ -25,18 +27,20 @@ public class Upload {
         this.imageUri = imageUri;
     }
 
+    public Object getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Object timestamp) {
+        this.timestamp = timestamp;
+    }
+
+
     private String imageName;
     private String imageUri;
-    private String username;
+    private Object timestamp;
 
-    public Upload() {
+    public UserHistoryDetails() {
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 }

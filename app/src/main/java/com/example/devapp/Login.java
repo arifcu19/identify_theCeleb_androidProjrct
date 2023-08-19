@@ -5,8 +5,10 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -48,10 +50,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         ActionBar actionBar;
         actionBar = getSupportActionBar();
-
         ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#236488"));
         actionBar.setBackgroundDrawable(colorDrawable);
-
+        this.setTitle("AppDev");
 
         loginButton =  findViewById(R.id.signinButton);
         gotoSignup = findViewById(R.id.gotoSignupId);
@@ -147,6 +148,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             nextActivity();
                         }else{
                             user.sendEmailVerification();
+                            mAuth.signOut();
+                            showAlertDialog();
                             Toast.makeText(Login.this,"Email is not verified",Toast.LENGTH_SHORT).show();
                         }
                     }else{
@@ -195,16 +198,35 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         FirebaseUser firebaseUser = mAuth.getCurrentUser();
 
         if(firebaseUser != null){
-            Intent i = new Intent(Login.this, Home.class);
+            Intent i = new Intent(Login.this, HomeActivity.class);
             startActivity(i);
             finish();
         }
     }
 
     private void nextActivity(){
-        Intent i = new Intent(Login.this, Home.class);
+        Intent i = new Intent(Login.this, HomeActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
+    }
+
+    private void showAlertDialog() {
+        AlertDialog.Builder builder= new AlertDialog.Builder(Login.this);
+        builder.setIcon(R.drawable.ic_baseline_email);
+        builder.setTitle("Email is not verified");
+        builder.setMessage("Please verify your email first");
+        builder.setPositiveButton("continue", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent =new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_APP_EMAIL);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+
+            }
+        });
+        AlertDialog alertDialog= builder.create();
+        alertDialog.show();
     }
 
 }

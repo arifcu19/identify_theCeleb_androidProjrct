@@ -1,12 +1,12 @@
 package com.example.devapp;
 
-public class ModelClass {
+public class CommentModelClass {
 
     String username;
     String userimage;
     String comment;
 
-    public ModelClass() {
+    public CommentModelClass() {
 
     }
 
@@ -55,7 +55,7 @@ public class ModelClass {
 
 
 
-    public ModelClass(String username, String userimage, String comment, String date, String time) {
+    public CommentModelClass(String username, String userimage, String comment, String date, String time) {
         this.username = username;
         this.userimage = userimage;
         this.comment = comment;

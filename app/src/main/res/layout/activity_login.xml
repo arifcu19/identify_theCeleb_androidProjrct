@@ -11,11 +11,22 @@
     android:layout_gravity="center"
     >
 
+
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_height="wrap_content"
+        card_view:cardBackgroundColor="#FCFFFF"
+        card_view:cardCornerRadius="1dp"
+        card_view:cardElevation="3dp"
+        card_view:cardUseCompatPadding="true"
+        >
     <LinearLayout
         android:gravity="center"
         android:background="#F3EEEE"
         android:orientation="vertical"
-        android:layout_marginTop="100dp"
         android:layout_width="370dp"
         android:layout_height="590dp">
 
@@ -168,4 +179,5 @@
 
 
     </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </LinearLayout>

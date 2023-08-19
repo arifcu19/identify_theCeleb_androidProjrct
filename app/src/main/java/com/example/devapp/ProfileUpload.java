@@ -1,13 +1,11 @@
 package com.example.devapp;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -16,16 +14,13 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.MimeTypeMap;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -36,7 +31,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -44,19 +38,19 @@ import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
-import com.squareup.picasso.Picasso;
 
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProfileUpdate extends AppCompatActivity {
+public class ProfileUpload extends AppCompatActivity {
 
     private ImageView userImage;
-    private EditText username;
-    private Button updateButton;
+    private Button uploadButton;
 
-    DatabaseReference profileDatabaseReference;
+    private TextView username;
+
+    DatabaseReference profileDatabaseReference, usersDatabaseReference;
     StorageReference profileStorageReference;
     Uri imageUri;
     Bitmap bitmap;
@@ -65,23 +59,18 @@ public class ProfileUpdate extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_update);
+        setContentView(R.layout.activity_profile_upload);
 
-        ActionBar actionBar;
-        actionBar = getSupportActionBar();
 
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#236488"));
-        actionBar.setBackgroundDrawable(colorDrawable);
-        this.setTitle("AppDev");
-
-        userImage = findViewById(R.id.userImage);
-        username = findViewById(R.id.userProfileName);
-        updateButton = findViewById(R.id.userProfileUpdateBtn);
+        userImage = findViewById(R.id.userImageUpload);
+        username = findViewById(R.id.userProfileNameUpload);
+        uploadButton = findViewById(R.id.userProfileUploadBtn);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();
 
         profileDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Userprofile");
+        usersDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
         profileStorageReference = FirebaseStorage.getInstance().getReference();
 
         userImage.setOnClickListener(new View.OnClickListener() {
@@ -111,10 +100,10 @@ public class ProfileUpdate extends AppCompatActivity {
             }
         });
 
-        updateButton.setOnClickListener(new View.OnClickListener() {
+        uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateProfile();
+                uploadProfile();
             }
         });
     }
@@ -137,57 +126,62 @@ public class ProfileUpdate extends AppCompatActivity {
 
 
 
-    private void updateProfile(){
+    private void uploadProfile(){
 
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("File Uploader");
-        progressDialog.show();
+        if(imageUri != null) {
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("File Uploader");
+            progressDialog.show();
 
-        final StorageReference uploader = profileStorageReference.child("profileimages/"+"img"+System.currentTimeMillis());
-        uploader.putFile(imageUri)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+            final StorageReference uploader = profileStorageReference.child("profileimages/" + "img" + System.currentTimeMillis());
+            uploader.putFile(imageUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                        uploader.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
+                            uploader.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
 
-                                final Map<String, Object> map = new HashMap<>();
-                                map.put("uimage",uri.toString());
-                                map.put("uname",username.getText().toString());
+                                    final Map<String, Object> map = new HashMap<>();
+                                    map.put("uimage", uri.toString());
+                                    map.put("uname", username.getText().toString());
 
-                                profileDatabaseReference.child(userId).addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        if(snapshot.exists()){
-                                            profileDatabaseReference.child(userId).updateChildren(map);
+                                    profileDatabaseReference.child(userId).addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            if (snapshot.exists()) {
+                                                profileDatabaseReference.child(userId).updateChildren(map);
+                                            } else {
+                                                profileDatabaseReference.child(userId).setValue(map);
+                                            }
                                         }
-                                        else{
-                                            profileDatabaseReference.child(userId).setValue(map);
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+
                                         }
-                                    }
+                                    });
 
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(ProfileUpload.this, "Successfully Updated", Toast.LENGTH_SHORT).show();
+                                }
+                            });
 
-                                    }
-                                });
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                            progressDialog.setMessage("Uploaded " + (int) progress + "%");
+                        }
+                });
+        }
 
-                                progressDialog.dismiss();
-                                Toast.makeText(ProfileUpdate.this, "Successfully Updated", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
-                    }
-                })
-                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                    double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                    progressDialog.setMessage("Uploaded "+(int) progress + "%");
-            }
-        });
+        else{
+            Toast.makeText(this, "Select image", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -197,13 +191,11 @@ public class ProfileUpdate extends AppCompatActivity {
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         userId = firebaseUser.getUid();
 
-        profileDatabaseReference.child((userId)).addValueEventListener(new ValueEventListener() {
+
+        usersDatabaseReference.child(userId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    username.setText(snapshot.child("uname").getValue().toString());
-                    Glide.with(getApplicationContext()).load(snapshot.child("uimage").getValue().toString()).into(userImage);
-                }
+                username.setText(snapshot.child("username").getValue().toString());
             }
 
             @Override
@@ -211,5 +203,7 @@ public class ProfileUpdate extends AppCompatActivity {
 
             }
         });
+
+
     }
 }

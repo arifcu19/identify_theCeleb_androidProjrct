@@ -2,6 +2,9 @@
     <string name="app_name">DevApp</string>
     <string name="the_celebrity_is_a_person_who_is_known_for_his_well_knownness">The celebrity is a person who is known for his well-knownness.\n"                                     "Daniel J. Boorstin</string>
 
+    <string name="OpenDrawer">Open navigation drawer</string>
+    <string name="CloseDrawer">Close navigation drawer</string>
+
     <string-array name="fields">
         <item>Footballers</item>
         <item>Cricketers</item>
@@ -9,6 +12,130 @@
     </string-array>
 
     <string name="wesendyou">We will send you an OTP on this mobile number</string>
+
+    <string-array name="array_division">
+        <item>Select Division</item>
+        <item>Dhaka</item>
+        <item>Chittagong</item>
+        <item>Sylhet</item>
+        <item>Rajshahi</item>
+        <item>Khulna</item>
+        <item>Barisal</item>
+        <item>Rangpur</item>
+        <item>Mymensingh</item>
+    </string-array>
+
+
+    <string-array name="array_dhaka_districts">
+        <item>Select District</item>
+        <item>Dhaka</item>
+        <item>Faridpur</item>
+        <item>Gazipur</item>
+        <item>Gopalganj</item>
+        <item>Kishoreganj</item>
+        <item>Madaripur</item>
+        <item>Manikganj</item>
+        <item>Narayanganj</item>
+        <item>Narsingdi</item>
+        <item>Rajbari</item>
+        <item>Shariatpur</item>
+        <item>Tangail</item>
+    </string-array>
+
+
+    <string-array name="array_chittagong_districts">
+        <item>Select District</item>
+        <item>Chittagong</item>
+        <item>Coxs Bazar</item>
+        <item>Rangamati</item>
+        <item>Bandarban</item>
+        <item>Khagrachhari</item>
+        <item>Feni</item>
+        <item>Lakshmipur</item>
+        <item>Comilla</item>
+        <item>Noakhali</item>
+        <item>Brahmanbaria</item>
+        <item>Chandpur</item>
+    </string-array>
+
+    <string-array name="array_sylhet_districts">
+        <item>Select District</item>
+        <item>Sylhet</item>
+        <item>Moulvibazar</item>
+        <item>Sunamganj</item>
+        <item>Habiganj</item>
+
+    </string-array>
+
+
+    <string-array name="array_rajshahi_districts">
+        <item>Select District</item>
+        <item>Rajshahi</item>
+        <item>Natore</item>
+        <item>Sirajganj</item>
+        <item>Pabna</item>
+        <item>Chapainawabganj</item>
+        <item>Naogaon</item>
+        <item>Joypurhat</item>
+        <item>Bogura</item>
+    </string-array>
+
+
+    <string-array name="array_rangpur_districts">
+        <item>Select District</item>
+        <item>Rangpur</item>
+        <item>Gaibandha</item>
+        <item>Nilphamari</item>
+        <item>Kurigram</item>
+        <item>Lalmonirhat</item>
+        <item>Dinajpur</item>
+        <item>Thakurgaon</item>
+        <item>Panchagarh</item>
+    </string-array>
+
+
+    <string-array name="array_khulna_districts">
+        <item>Select District</item>
+        <item>Khulna</item>
+        <item>Bagherhat</item>
+        <item>Sathkhira</item>
+        <item>Jessore</item>
+        <item>Magura</item>
+        <item>Jhenaidah</item>
+        <item>Narail</item>
+        <item>Kushtia</item>
+        <item>Chuadanga</item>
+        <item>Meherpur</item>
+    </string-array>
+
+
+    <string-array name="array_barisal_districts">
+        <item>Select District</item>
+        <item>Barisal</item>
+        <item>Barguna</item>
+        <item>Bhola</item>
+        <item>Jhalokati</item>
+        <item>Pirojpur</item>
+        <item>Patuakhali</item>
+
+    </string-array>
+
+    <string-array name="array_mymensingh_districts">
+        <item>Select District</item>
+        <item>Mymensingh</item>
+        <item>Jamalpur</item>
+        <item>Netrokona</item>
+        <item>Sherpur</item>
+
+    </string-array>
+
+    <string-array name="array_default_districts">
+        <item>Select District</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logout">Logout</string>
+    <string name="setting">Setting</string>
 
 
 </resources>

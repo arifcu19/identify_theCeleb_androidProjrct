@@ -21,8 +21,6 @@ public class AdapterSpinner extends BaseAdapter {
         this.fields = fields;
     }
 
-
-
     @Override
     public int getCount() {
         return fields.length;

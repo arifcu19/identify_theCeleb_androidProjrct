@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+$splash-bg-color: #fff;
+$splash-text-color: #c35353;
+$splash-font-family: 'Roboto', sans-serif;
+$animation-duration: 1s;
+$slide-duration: 4s; // Adjust the duration as desired
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.splash-screen {
+  background-color: $splash-bg-color;
+  color: $splash-text-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: $splash-font-family;
+  opacity: 0;
+  animation: fade-in $animation-duration ease-in-out forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+h1, p {
+  transform: translateX(-100%);
+  opacity: 0;
+  animation: slide-in $slide-duration ease-in-out infinite;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  20% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.5rem;
+}

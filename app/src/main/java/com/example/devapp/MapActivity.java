@@ -5,11 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -32,19 +38,17 @@ public class MapActivity extends AppCompatActivity {
 
     SupportMapFragment smf;
     FusedLocationProviderClient client;
+    private static final int REQUEST_LOCATION_SETTINGS = 1;
+    boolean isLocationEnabled;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
-        ActionBar actionBar;
-        actionBar = getSupportActionBar();
-
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#236488"));
-        actionBar.setBackgroundDrawable(colorDrawable);
-        this.setTitle("AppDev");
-
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        isLocationEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+                || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
         smf = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.gmap);
         client = LocationServices.getFusedLocationProviderClient(this);
@@ -70,17 +74,32 @@ public class MapActivity extends AppCompatActivity {
     }
 
 
+    private void showEnableLocationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Enable Location")
+                .setMessage("Location services are disabled. Do you want to enable them?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Open location settings
+                        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                        startActivityForResult(intent, REQUEST_LOCATION_SETTINGS);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // User declined to enable location services
+                        dialog.dismiss();
+                    }
+                })
+                .setCancelable(false)
+                .show();
+    }
+
+
     public void getmylocation() {
-
-
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         Task<Location> task = client.getLastLocation();
@@ -90,11 +109,18 @@ public class MapActivity extends AppCompatActivity {
                 smf.getMapAsync(new OnMapReadyCallback() {
                     @Override
                     public void onMapReady(GoogleMap googleMap) {
-                        LatLng latLng=new LatLng(location.getLatitude(),location.getLongitude());
-                        MarkerOptions markerOptions=new MarkerOptions().position(latLng).title("You are here...!!");
 
-                        googleMap.addMarker(markerOptions);
-                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,17));
+                        if (isLocationEnabled) {
+                            LatLng latLng=new LatLng(location.getLatitude(),location.getLongitude());
+                            MarkerOptions markerOptions=new MarkerOptions().position(latLng).title("You are here...!!");
+
+                            googleMap.addMarker(markerOptions);
+                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,17));
+                        }
+                        else{
+                            showEnableLocationDialog();
+                        }
+
                     }
                 });
             }

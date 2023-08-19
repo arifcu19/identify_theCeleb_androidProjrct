@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -20,10 +21,38 @@
         android:theme="@style/Theme.DevApp"
         tools:targetApi="31">
         <activity
-            android:name=".SoccerClass"
+            android:windowSoftInputMode="adjustPan"
+            android:name=".MessagingActivity"
             android:exported="false" />
         <activity
-            android:name=".Cricketers"
+            android:windowSoftInputMode="adjustPan"
+            android:name=".LoadingUserProfile"
+            android:exported="false" />
+        <activity
+            android:name=".Pagination"
+            android:exported="false" />
+        <activity
+            android:name=".PictureFullView"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileUpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReportGenerator"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".UserHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:windowSoftInputMode="adjustPan"
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SoccerClass"
             android:exported="false" />
         <activity
             android:name=".RatingActivity"
@@ -43,16 +72,16 @@
             android:value="AIzaSyCpRQ_QYtM1MQ9Xrp1eG-0FWs87yvlHPCM" />
 
         <activity
-            android:name=".ProfileUpdate"
+            android:name=".ProfileUpload"
             android:exported="false" />
         <activity
             android:name=".CommentPanel"
             android:exported="false" />
         <activity
-            android:name=".ShowImageReview"
+            android:name=".ReviewDisplay"
             android:exported="false" />
         <activity
-            android:name=".ImageReview"
+            android:name=".GiveReview"
             android:exported="false" />
         <activity
             android:name=".Detection"
@@ -60,9 +89,11 @@
         <activity
             android:name=".ForgotPassword"
             android:exported="false" />
-        <activity
+        <!--
+ <activity
             android:name=".Home"
             android:exported="false" />
+        -->
         <activity
             android:name=".Registration"
             android:exported="false" />

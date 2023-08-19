@@ -5,57 +5,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-
     android:layout_height="match_parent"
-    tools:context=".ProfileUpdate">
+    tools:context=".ProfileUpload">
 
     <LinearLayout
         android:background="@drawable/ic_wave"
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="160dp">
 
     </LinearLayout>
+
+
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="360dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="500dp"
+        card_view:cardBackgroundColor="#FCFFFF"
+        card_view:cardCornerRadius="1dp"
+        card_view:cardElevation="3dp"
+        card_view:cardUseCompatPadding="true"
+        >
 
 
     <LinearLayout
         android:orientation="vertical"
-        android:gravity="center"
+        android:layout_marginTop="14dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
 
+        <androidx.cardview.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="#FCFFFF"
+            card_view:cardCornerRadius="1dp"
+            card_view:cardElevation="3dp"
+            card_view:cardUseCompatPadding="true"
+            >
+     <LinearLayout
+         android:layout_width="wrap_content"
+         android:layout_gravity="center"
+         android:layout_height="wrap_content">
+         <ImageView
+             android:src="@drawable/update_image"
+             android:layout_gravity="center"
+             android:id="@+id/updateProfileImageId"
+             android:layout_width="250dp"
+             android:layout_height="320dp">
 
-        <ImageView
-            android:src="@drawable/ic_image"
-            android:id="@+id/userImage"
-            android:layout_width="400dp"
-            android:layout_height="400dp">
-
-        </ImageView>
+         </ImageView>
+     </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <EditText
-            android:id="@+id/userProfileName"
+            android:id="@+id/updateProfileNameId"
             android:layout_width="300dp"
             android:textSize="20sp"
-            android:hint="Update username"
+            android:hint="Enter new user name"
+            android:layout_gravity="center"
+            android:textColor="#52A4C5"
             android:background="@drawable/background"
             android:textAlignment="center"
             android:layout_marginTop="10dp"
-            android:layout_height="wrap_content">
+            android:layout_height="35dp">
 
         </EditText>
 
         <Button
-            android:text="Update"
-            android:id="@+id/userProfileUpdateBtn"
+            android:text="update"
+            android:id="@+id/updateButtonId"
+            android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
         </Button>
 
+
     </LinearLayout>
 
+    </androidx.cardview.widget.CardView>
 
 
 </LinearLayout>

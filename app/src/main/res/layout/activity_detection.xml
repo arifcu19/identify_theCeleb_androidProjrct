@@ -11,78 +11,114 @@
     <LinearLayout
         android:background="@drawable/ic_wave"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="100dp">
 
     </LinearLayout>
 
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="370dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="550dp"
+        card_view:cardBackgroundColor="#FCFFFF"
+        card_view:cardCornerRadius="1dp"
+        card_view:cardElevation="3dp"
+        card_view:cardUseCompatPadding="true"
+        >
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
 
     <ImageView
-        android:layout_width="350sp"
-        android:layout_height="350sp"
         android:layout_gravity="center"
-        android:background="@drawable/ic_launcher_image"
+        android:id="@+id/imageVW"
+        android:background="@drawable/celebdefault"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginLeft="15dp"
         android:layout_centerHorizontal="true"
-        android:id="@+id/imageView"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Classified as:"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-        android:id="@+id/classified"
-        android:layout_below="@+id/imageView"
-        android:layout_marginTop="10sp"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text=""
-        android:textColor="#C30000"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:textSize="27sp"
-        android:id="@+id/result"
-        android:layout_below="@+id/classified"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/confidencesText"
-        android:text=""
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/result"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text=""
-        android:layout_gravity="center"
-        android:textColor="#000"
-        android:textSize="22sp"
-        android:id="@+id/confidence"
-        android:layout_below="@+id/confidencesText"
+        android:layout_marginTop="16dp"
         />
 
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:id="@+id/button"
-        android:text="Take Picture"
-        android:textAllCaps="false"
-        android:layout_gravity="center"
-        android:layout_alignParentBottom="true"
-        android:textSize="21sp"
+    <TextView
+        android:id="@+id/resultOptions"
+        android:layout_centerHorizontal="true"
         android:textStyle="bold"
-        />
+        android:textColor="#CC1414"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/clickOptions"
+        android:layout_centerHorizontal="true"
+        android:textColor="#CC1414"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_height="120dp">
+
+        <TextView
+            android:id="@+id/btnSelectPicture"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_bg"
+            android:layout_width="150dp"
+            android:layout_gravity="center"
+            android:layout_height="45dp"
+            android:layout_centerInParent="true"
+            android:textAllCaps="false"
+            android:text="Select Picture"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="25dp"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="#fff"
+            />
+
+
+
+        <TextView
+            android:id="@+id/btnTakePicture"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_bg"
+            android:layout_width="150dp"
+            android:layout_gravity="center"
+            android:layout_height="45dp"
+            android:layout_centerInParent="true"
+            android:textAllCaps="false"
+            android:text="Take Picture"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="#fff"
+            />
+
+
+          </LinearLayout>
+
+     </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

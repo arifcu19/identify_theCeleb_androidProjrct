@@ -8,14 +8,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class RatingActivity extends AppCompatActivity {
 
@@ -24,7 +26,7 @@ public class RatingActivity extends AppCompatActivity {
 
     private Button submitRating;
     private float userRating;
-
+    String userId = "";
     DatabaseReference ratingReference;
 
     @Override
@@ -40,7 +42,7 @@ public class RatingActivity extends AppCompatActivity {
 
         ratingReference = FirebaseDatabase.getInstance().getReference("Rating");
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        final String userId = firebaseUser.getUid();
+        userId = firebaseUser.getUid();
 
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
@@ -56,7 +58,6 @@ public class RatingActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 RatingDetails ratingDetails = new RatingDetails(userId, userRating);
-
                 ratingReference.child(userId).setValue(ratingDetails)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
@@ -72,6 +73,31 @@ public class RatingActivity extends AppCompatActivity {
                         });
 
             }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        ratingReference.child(userId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChild("userId")){
+                    Object rating = dataSnapshot.child("rating").getValue();
+                    float userRating = ((Number) rating).floatValue();
+                    ratingBar.setRating(userRating);
+                    ratingValue.setText(""+userRating);
+                    ratingBar.setIsIndicator(true);
+                    submitRating.setVisibility(View.GONE);
+                    thankingText.setText("Thank you for rating us");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+
         });
     }
 }

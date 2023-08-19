@@ -89,7 +89,7 @@ public class VerifyOTP extends AppCompatActivity {
                                     verifyButton.setVisibility(View.VISIBLE);*/
 
                                     if(task.isSuccessful()){
-                                        Intent intent = new Intent(getApplicationContext(),Login.class);
+                                        Intent intent = new Intent(getApplicationContext(), Login.class);
                                         startActivity(intent);
                                     }
                                     else{

@@ -30,15 +30,9 @@ public class ForgotPassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
 
-        ActionBar actionBar;
-        actionBar = getSupportActionBar();
-
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#236488"));
-        actionBar.setBackgroundDrawable(colorDrawable);
 
         edt_email =  findViewById(R.id.emailId);
         resetButton = findViewById(R.id.resetId);
-
         progressDialog = new ProgressDialog(this);
 
 

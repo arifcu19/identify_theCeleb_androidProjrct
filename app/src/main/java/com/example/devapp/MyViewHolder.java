@@ -5,6 +5,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -14,9 +15,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MyViewHolder extends RecyclerView.ViewHolder {
-    ImageView imageView,likeButton,commentsButton;
-    TextView textView,userTextView,likeCount;
+    ImageView imageView,likeButton,commentsButton,userImage;
+    TextView textView,userTextView,likeCount,currentLocation;
     DatabaseReference likeReference;
+
+    ImageView reviewBottomsheet;
 
     public MyViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -27,6 +30,9 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
         likeButton = itemView.findViewById(R.id.likeBtn);
         likeCount = itemView.findViewById(R.id.likeCnt);
         commentsButton = itemView.findViewById(R.id.commentButtonId);
+        currentLocation = itemView.findViewById(R.id.displayCurrentLocation);
+        userImage = itemView.findViewById(R.id.userImageDisplay);
+        reviewBottomsheet = itemView.findViewById(R.id.forBottomsheet);
 
     }
 

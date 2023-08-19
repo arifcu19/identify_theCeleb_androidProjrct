@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <item
+        android:id="@+id/navProfile"
+        android:title="Profile"
+        android:icon="@drawable/ic_account"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/navHistory"
+        android:title="History"
+        android:icon="@drawable/ic_history"
+        app:showAsAction="never"
+        />
+
+
+    <item
+        android:title="Rate us"
+        android:id="@+id/navRating"
+        android:icon="@drawable/ic_rating"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:title="Report"
+        android:id="@+id/navReport"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_pdf">
+
+    </item>
+
+    <item
+        android:title="Share"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_share">
+
+    </item>
+
+</menu>
