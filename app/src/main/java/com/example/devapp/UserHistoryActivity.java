@@ -133,7 +133,7 @@ public class UserHistoryActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
                             Toast.makeText(UserHistoryActivity.this, "Delete all", Toast.LENGTH_SHORT).show();
-                            deleteAllHistory();
+                            //deleteAllHistory();
                         }
                     });
                 }
@@ -241,7 +241,7 @@ public class UserHistoryActivity extends AppCompatActivity {
 
     }
 
-    private void deleteAllHistory(){
+/*    private void deleteAllHistory(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String userId = user.getUid();
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("UserHistory");
@@ -259,6 +259,6 @@ public class UserHistoryActivity extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 
 }
